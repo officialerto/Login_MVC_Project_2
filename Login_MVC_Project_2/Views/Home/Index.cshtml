@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <h1 style="color:forestgreen">SUCCESSFULLY LOGIN</h1>
+        <h2>Username: @Session["userName"].ToString()</h2>
+        <a style="color:red; text-decoration:none; width:100px" href="@Url.Action("LogOut", "Login")">Log Out</a>
+    </div>
+</body>
+</html>

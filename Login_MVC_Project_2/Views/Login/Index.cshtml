@@ -1,0 +1,83 @@
+﻿@model Login_MVC_Project_2.Models.C_User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+
+    <style>
+        #login-div {
+            position: absolute;
+            left: 40%;
+            top: 45%;
+            border: 1px solid #ccc;
+            padding: 17px 13px;
+            font-size: 20px;
+        }
+
+        .field-validation-error{
+            color:red;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="login-div">
+        @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
+        {
+        <table>
+            <tr>
+                <td></td>
+                <td style="text-decoration: underline; padding-bottom: 10px">App Name</td>
+            </tr>
+
+            <tr>
+                <td style="padding-right:10px">@Html.LabelFor(model => model.UserName)</td>
+                <td>@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { placeholder = "Username" } })</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>@Html.ValidationMessageFor(model => model.UserName)</td>
+            </tr>
+
+            <tr>
+                <td style="padding-right:10px">@Html.LabelFor(model => model.Password)</td>
+                <td>@Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Password" } })</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>@Html.ValidationMessageFor(model => model.Password)</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"></td>
+                <label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td style="padding-top:7px" ;>
+                    <input type="submit" name="name" value="Login" />
+                    <input type="reset" name="name" value="Clear" />
+                </td>
+            </tr>
+
+        </table>
+        }
+    </div>
+
+    <script src="~/Scripts/jquery-1.4.4.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+</html>
